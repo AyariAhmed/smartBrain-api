@@ -1,9 +1,9 @@
 
 
-const handleRegister = (req, res ,db , bcrypt) => {
+const handleRegister = (req, res, db, bcrypt) => {
     const { email, name, password } = req.body;
-    if(!email || !name || !password){
-      return res.status(400).json('Incorrect form submission!'); 
+    if (!email || !name || !password) {
+        return res.status(400).json('Incorrect form submission!');
     }
 
     const saltRounds = 7;
@@ -21,8 +21,7 @@ const handleRegister = (req, res ,db , bcrypt) => {
                     .insert({
                         email: loginEmail[0],
                         name: name,
-                        joined : '2020-04 - 21 01: 08: 30.935'
-                       // joined: new Date()
+                        joined: new Date()
                     }).then(user => res.json(user[0]))
 
             })
@@ -33,5 +32,5 @@ const handleRegister = (req, res ,db , bcrypt) => {
 }
 
 module.exports = {
-    handleRegister : handleRegister
+    handleRegister: handleRegister
 };
