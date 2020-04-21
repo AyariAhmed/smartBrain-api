@@ -13,7 +13,7 @@ const handleRegister = (req, res, db, bcrypt) => {
         trx.insert({
             hash: hash,
             email: email
-        }).into('login')
+        }).into('login').catch(err => res.json("Here was ..."))
             .returning('email')
             .then(loginEmail => {
                 return trx('users')
